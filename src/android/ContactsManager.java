@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.Organization;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Contacts.Data;
@@ -87,6 +88,7 @@ public class ContactsManager extends CordovaPlugin {
             ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
             ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
             ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
+            ContactsContract.CommonDataKinds.Organization.COMPANY,
             ContactsContract.Contacts.HAS_PHONE_NUMBER,
             ContactsContract.CommonDataKinds.Phone.NUMBER,
             ContactsContract.CommonDataKinds.Phone.NORMALIZED_NUMBER,
@@ -158,6 +160,7 @@ public class ContactsManager extends CordovaPlugin {
                         contact.put("lastName", c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME)));
                         contact.put("middleName", c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME)));
                         contact.put("displayName", c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)));
+                        contact.put("companyName", c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Organization.COMPANY)));
                         contact.put("thumbnail", c.getString(c.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
                     }
                     else if (mimetype.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {

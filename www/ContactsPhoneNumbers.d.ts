@@ -22,6 +22,10 @@ interface Contact {
     firstName?: string;
     /** The last name of this Contact. */
     lastName?: string;
+    /** The middle name of this Contact. */
+    middleName?: string;
+    /** The company name of this Contact. */
+    companyName?: string;
     /** The name of this Contact, suitable for display to end users. */
     displayName?: string;
     /** An array of all the contact's phone numbers. */
@@ -34,6 +38,8 @@ declare var Contact: {
         firstName?: string,
         LastName?: string,
         displayName?: string,
+        middleName?: string,
+        companyName?: string,
         phoneNumbers?: ContactPhoneNumber[]): Contact
 };
 

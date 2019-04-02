@@ -120,6 +120,13 @@
                         displayName = [displayName stringByAppendingString:lastName];
                     }
 
+                    NSString *companyName = (__bridge_transfer NSString*)ABRecordCopyValue(ref, kABPersonOrganizationProperty);
+                    if (!companyName) {
+                        companyName = @"";
+                    }
+
+
+
                     NSString *contactId = [NSString stringWithFormat:@"%d", ABRecordGetRecordID(ref)];
 
                     //NSLog(@"Name %@ - %@", displayName, contactId);
@@ -130,6 +137,7 @@
                     [contactDictionary setObject: firstName forKey:@"firstName"];
                     [contactDictionary setObject: lastName forKey:@"lastName"];
                     [contactDictionary setObject: middleName forKey:@"middleName"];
+                    [contactDictionary setObject: companyName forKey:@"companyName"];
                     [contactDictionary setObject: phoneNumbersArray forKey:@"phoneNumbers"];
 
                     //add the contact to the list to return
